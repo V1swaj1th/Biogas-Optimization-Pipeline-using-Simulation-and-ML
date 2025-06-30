@@ -98,7 +98,4 @@ if submitted:
         st.metric("Methane Yield (L CH₄/L)", round(prediction, 4))
         st.caption("📊 Summary: Predicted CH₄ yield based on current plant settings.")
 
-# -------------------------
-# Footer
-# -------------------------
-st.caption("Built using Streamlit | IIT Indore Biogas Project")
+
