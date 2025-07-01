@@ -73,8 +73,8 @@ Over-recycling or high NH₃/VFA reduces yield
 
 Palm oil fraction improves yield (up to ~0.3), but excess leads to inhibition
 
-3. Contour Graph Example
-<img src="contour_plot.png" width="600"/>
+3. Contour Graph Example -> Methane Yield v Temperature
+<img src="temeprature_contour_graph.png" width="600"/>
 
 ## Contributors
 M. Viswajith
