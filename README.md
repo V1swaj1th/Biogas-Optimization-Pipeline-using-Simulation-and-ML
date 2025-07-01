@@ -1,5 +1,5 @@
 # Biogas-Optimization-Pipeline-using-Simulation-and-ML
-Prof. Vibhor Pandhare – IIT Indore
+ under Prof. Vibhor Pandhare – IIT Indore
 
 ## Problem Statement
 This project aims to optimize methane yield from a two-stage anaerobic digester by simulating plant behavior and training a machine learning model to predict outcomes. Due to limited real-world sensor data, we developed a realistic process model to generate synthetic yet physically grounded data for analysis.
