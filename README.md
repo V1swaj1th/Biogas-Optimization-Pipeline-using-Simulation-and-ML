@@ -1,21 +1,96 @@
 # Biogas-Optimization-Pipeline-using-Simulation-and-ML
-A data-driven modeling pipeline to optimize methane yield in anaerobic digesters. Includes a 2-stage ADM1-inspired simulator with physiological penalties, synthetic dataset generation, ML-based methane prediction, feature importance analysis, and a multi-role Streamlit dashboard for monitoring and decision support.
+Prof. Vibhor Pandhare – IIT Indore
 
-This project simulates and optimizes methane production in a two-stage anaerobic digester using a custom-built mathematical model + machine learning. The idea was to create a reliable digital approximation of a real biogas plant, especially since I didn’t have real sensor data.
+Problem Statement
+This project aims to optimize methane yield from a two-stage anaerobic digester by simulating plant behavior and training a machine learning model to predict outcomes. Due to limited real-world sensor data, we developed a realistic process model to generate synthetic yet physically grounded data for analysis.
 
-I simulate various process parameters (like temperature, OLR, recycle ratio, agitator power etc.), generate synthetic but realistic training data, and train an ML model (Gradient Boosting) to predict methane yield. To make sure it’s not just curve-fitting, I also applied physiological penalties (e.g., NH₃ and VFA inhibition, temperature deviation, poor mixing, etc.) so the outputs reflect realistic trends.
+Dataset
+Data Source: Generated using a custom ADM1-inspired simulator
 
-This project includes the following - 
-A 2-stage ADM1-inspired model that simulates hydrolysis to methanogenesis using ODEs
+Data Size: ~1000 parameter combinations
 
-Penalties for conditions that affect microbial activity (ammonia, temperature, mixing, etc.)
+Variables:
 
-Code to generate synthetic data over a wide range of process variables
+Inputs: Flow rate, Temperature (T1, T2), Agitator power, Recycle ratio, Palm oil fraction, Sugar input
 
-An ML pipeline (Gradient Boosting Regressor) trained on this simulated data
+Derived: OLR, HRT1, HRT2
 
-Feature importance analysis + graphs to visualize how variables affect CH₄ yield
+Outputs: Methane Yield (L CH₄/L), Biogas Flow, VFA, NH₃
 
-A Streamlit dashboard with 4 access levels (Technician, Engineer, Manager, Executive)
+Format: CSV (training + validation sets)
 
-Role-based monitoring, prediction, alerts, and visualizations
+Workflow
+Mathematical Modeling (Part 1)
+
+Developed a mechanistic, two-stage anaerobic digestion model using ODEs.
+
+Incorporated biological inhibition penalties for VFA, NH₃, poor mixing, and off-optimal temperature.
+
+Data Generation
+
+Simulated hundreds of input combinations to build a synthetic dataset.
+
+Exported training and validation datasets for ML.
+
+ML Modeling (Part 2)
+
+Trained a Gradient Boosting Regressor to predict methane yield.
+
+Achieved high accuracy using 5-fold cross-validation (R² ~0.92).
+
+CLI-based Prediction (Part 3)
+
+Simple command-line tool for predicting CH₄ yield from custom input.
+
+Visualization & Analysis
+
+Generated trend plots, feature importance, and density contours to analyze variable impact.
+
+Streamlit Dashboard
+
+Built a 4-level role-based dashboard (Technician, Engineer, Manager, Executive).
+
+Real-time input, CH₄ prediction, graph summaries, alerts, and system insights.
+
+Why This Approach?
+Lack of Plant Data: A mathematical model helped simulate plant behavior realistically.
+
+Penalty Functions: Ensured outputs reflect known limitations (e.g., ammonia inhibition).
+
+ML Interpretability: Feature importance graphs helped explain the influence of each variable.
+
+Scalability: Framework can adapt to more sensor inputs or field data when available.
+
+Results & Visualizations
+1. Feature Importance Plot
+<img src="feature_importance.png" width="600"/>
+
+2. Trends Identified
+
+CH₄ yield increases with temperature (optimum ~37°C)
+
+Over-recycling or high NH₃/VFA reduces yield
+
+Palm oil fraction improves yield (up to ~0.3), but excess leads to inhibition
+
+3. Contour Graph Example
+<img src="contour_plot.png" width="600"/>
+
+Contributors
+M. Viswajith
+BTech Mechanical Engineering, IIT Indore
+
+Tools & Technologies
+Programming: Python
+
+Modeling: NumPy, SciPy (odeint)
+
+ML: scikit-learn, joblib
+
+Visualization: matplotlib, seaborn
+
+App: Streamlit
+
+Conclusion
+This project bridges process simulation and machine learning to optimize biogas generation. It lays the groundwork for a digital twin–like system and provides useful insights even without real-time sensor data.
+
